@@ -3,15 +3,10 @@
     
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Заполните форму заказа</h1>
-        
-        
-        
     </div>
     <div class="row">
         <p>и мы свяжемся с Вами для уточнения деталей в ближайшее время</p>
     </div>
-      
-
       
     <div class="row">
         @if($errors->any())

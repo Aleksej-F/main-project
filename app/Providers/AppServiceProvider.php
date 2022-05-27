@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind(QueryBuilder::class, QueryBuilderNews::class);
+        $this->app->bind(QueryBuilder::class, QueryBuilderCategories::class);
     }
 
     /**

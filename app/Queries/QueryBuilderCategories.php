@@ -28,4 +28,6 @@ class QueryBuilderCategories implements QueryBuilder
 		return Category::select(['id', 'title', 'description', 'created_at'])
 			->findOrFail($id);
 	}
+
+	
 }

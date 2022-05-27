@@ -43,14 +43,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/news', [NewsController::class, 'index']) 
     ->name('news');
 
-Route::get('/news/{id}', [NewsController::class, 'show'])
+Route::get('/news/{news}', [NewsController::class, 'show'])
     ->where('id','\d+')
     ->name('news.show');
 
 Route::get('/categories', [CategoryController::class, 'index']) 
     ->name('categories');
 
-Route::get('/categories/{id}', [CategoryController::class, 'show']) 
+Route::get('/categories/{id}', [NewsController::class, 'shownews']) 
     ->name('categories.show');
 
 //admin routes

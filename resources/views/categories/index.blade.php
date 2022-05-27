@@ -7,17 +7,21 @@
         
       </div>
 
-
-
-    
-    
     <hr>
-    @foreach($categoriesList as $category)
-    <div>
-        <a href="{{ route('categories.show', ['id' => $category->id]) }}">{{ $category->title }}</a>
-        <br />
-        <br />
-    </div>
+    <div class="table-responsive">
+        @forelse($categories as $category)
+        <div>
+            <a href="{{ route('categories.show', ['id' => $category->id]) }}">{{ $category->title }}</a>
+            <br />
+            <br />
+        </div>
 
-    @endforeach
+        @empty
+            <tr>
+                <td colspan="4">Записей нет</td>
+            </tr>
+        @endforelse
+
+        {{ $categories->links() }}
+    </div>
 @endsection

@@ -1,27 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Category;
+use App\Queries\QueryBuilderCategories;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(QueryBuilderCategories $categories)
     {
-        // return 'yjhdjcnm';
-        $categories = $this->getCategories();
+               
         //dd($categories);
         return view('categories.index', [
-            'categoriesList' => $categories
+            'categories' => $categories->getCategories()
         ]);
     }
     
     public function show($id)
     {
-        $news = $this->getNews(null, $id);
+       
         //dd($news);
-        return view('news.index', [
-            'newsList' => $news
-        ]);
+        // return view('news.index', [
+        //     'newsList' => $news->getNewsByIdCategory($id)
+        // ]);
     }
 }
