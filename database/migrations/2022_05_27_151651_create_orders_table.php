@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->string('phone')->unique();
-            $table->string('email')->unique();
+            $table->string('phone', 255);
+            $table->string('email', 255);
+            $table->enum('status', [ 'ACTIVE', 'PROCESSED','COMPLETED'])
+				->default('ACTIVE');
             $table->text('description')->nullable();
             $table->timestamps();
         });

@@ -39,7 +39,7 @@ class CategoryController extends Controller
 	 */
     public function store(Request $request)
     {
-        $validated = $request->only(['title', 'description']);
+      $validated = $request->only(['title', 'description']);
 		$category = new Category($validated);
 
 		if($category->save()) {

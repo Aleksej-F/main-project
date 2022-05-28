@@ -5,7 +5,9 @@
         <h1>Добро пожаловать на новостной портал.</h1>
     </div>
     <br>
+    @include('inc.messages')
     <br>
+    
     <div class="row row-cols-1 g-3">
         <h2>Напишите нам</h2>
     </div>

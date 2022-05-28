@@ -33,7 +33,7 @@
            
             <div class="form-group">
                 <label for="order_information">Информация о заказе</label>
-                <textarea class="form-control" name="order_information" id="order_information">{!! old('order_information') !!}</textarea>
+                <textarea class="form-control" name="description" id="description">{!! old('description') !!}</textarea>
             </div>
             <br>
             <button type="submit" class="btn btn-success">Оформить заказ</button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,15 @@ class ReviewsController extends Controller
     {
        
        
-        $request->validate([
-			'name' => ['required', 'string']
-		]);
+        $validated = $request->only(['name','review']);
+		$order = new Review($validated);
 
+		if($order->save()) {
+			return redirect()->route('home')
+				->with('success', 'Отзыв успешно отправлен');
+		}
 
-        return response()->json($request->only(['name', 'description']), 201);
+		return back()->with('error', 'Ошибка добавления');
     }
     
 

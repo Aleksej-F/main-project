@@ -28,7 +28,7 @@
            
             <div class="form-group">
                 <label for="description">Отзыв</label>
-                <textarea class="form-control" name="description" id="description">{!! old('description') !!}</textarea>
+                <textarea class="form-control" name="review" id="review">{!! old('review') !!}</textarea>
             </div>
             <br>
             <button type="submit" class="btn btn-success">Отправить</button>
