@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Queries\QueryBuilderCategories;
@@ -37,9 +39,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-      $validated = $request->only(['title', 'description']);
+      $validated = $request->except(['_token', 'image']);
 		$category = new Category($validated);
 
 		if($category->save()) {
@@ -81,9 +83,9 @@ class CategoryController extends Controller
 	 * @param Category $category
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function update(Request $request, Category $category)
+    public function update(UpdateRequest $request, Category $category)
     {
-        $validated = $request->only(['title', 'description']);
+		$validated = $request->except(['_token', 'image']);
 
 		$category = $category->fill($validated);
 		if($category->save()) {

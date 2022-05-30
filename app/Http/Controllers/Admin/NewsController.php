@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\News\UpdateRequest;
+use App\Http\Requests\Admin\News\StoreRequest;
 use App\Models\Category;
 use App\Models\News;
 use App\Queries\QueryBuilderNews;
@@ -41,11 +43,11 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-		$request->validate([
-			'title' => ['required', 'string']
-		]);
+		
+
+
 		$validated = $request->except(['_token', 'image']);
 		$validated['slug'] = \Str::slug($validated['title']);
 
@@ -91,8 +93,10 @@ class NewsController extends Controller
 	 * @param News $news
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function update(Request $request, News $news)
+    public function update(UpdateRequest $request, News $news)
     {
+		
+		
 		$validated = $request->except(['_token', 'image']);
 		$validated['slug'] = \Str::slug($validated['title']);
 
