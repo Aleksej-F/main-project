@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Account\indexController as AccounController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
@@ -53,16 +54,24 @@ Route::get('/categories', [CategoryController::class, 'index'])
 Route::get('/categories/{id}', [NewsController::class, 'shownews']) 
     ->name('categories.show');
 
-//admin routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
-	Route::get('/', AdminController::class)->name('index');
-    Route::resource('/categories', AdminCategoryController::class);
-	Route::resource('/news', AdminNewsController::class);
-});
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/account', AccounController::class)
+        ->name('account');
 
+    //admin routes
+    Route::group(['middleware' => 'admin','prefix' => 'admin', 'as' => 'admin.'], function() {
+        Route::get('/', AdminController::class)->name('index');
+        Route::resource('/categories', AdminCategoryController::class);
+        Route::resource('/news', AdminNewsController::class);
+    });
+});
 
 Route::get('/reviews', [ReviewsController::class, 'index']) ->name('reviews');
 Route::match(['post','get'],'/reviews/store', [ReviewsController::class, 'store']) ->name('reviews.store');
 
 Route::get('/orders', [OrdersController::class, 'index']) ->name('orders');
 Route::match(['post','get'],'/orders/store', [OrdersController::class, 'store']) ->name('orders.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
