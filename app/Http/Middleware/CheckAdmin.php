@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,7 @@ class CheckAdmin
     {
         if (Auth::check()) {
             $user = Auth::user();
+           // dd( $user);
             if($user->is_adminn === false){
                 abort(404);
             }

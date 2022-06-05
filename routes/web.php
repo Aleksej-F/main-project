@@ -13,6 +13,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\UsersController as AdminUsersController;
 
 /*/
 |--------------------------------------------------------------------------
@@ -63,6 +64,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/', AdminController::class)->name('index');
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/news', AdminNewsController::class);
+        Route::resource('/users', AdminUsersController::class);
     });
 });
 
