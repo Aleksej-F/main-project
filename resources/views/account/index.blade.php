@@ -3,6 +3,9 @@
    <div class="offset-4">
       <h2>Добро пожаловать, {{ Auth::user()->name }}</h2>
       <br>
+      @if(Auth::user()->avatar)
+         <img>
+      @endif
       @if(Auth::user()->is_admin)
          <a href="{{ route('admin.index')}}">В админку</a>
       @endif

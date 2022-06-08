@@ -16,7 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','is_admin'
+        'name', 
+        'email', 
+        'password',
+        'is_admin',
+        'avatar', 
+        'last_login_at'
+    ];
+
+    protected $dates = [
+        'last_login_at'
     ];
 
     /**
@@ -37,4 +46,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin'=> 'boolean'
     ];
+
+    public $timestamps = false;
 }
